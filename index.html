@@ -5,151 +5,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Study Quiz — 90 Image Questions</title>
   <style>
-    :root {
-      --bg: #f3f7fb;
-      --card: #fff;
-      --primary: #1565c0;
-      --accent: #42a5f5;
-    }
-    body {
-      font-family: Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      margin: 0;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    header {
-      max-width: 900px;
-      width: 100%;
-      margin-bottom: 16px;
-      text-align: center;
-      padding: 0 8px;
-    }
-    h1 {
-      color: var(--primary);
-      margin: 0 0 6px;
-      font-size: 20px;
-    }
-    p.lead {
-      margin: 0;
-      color: #334;
-      opacity: .9;
-      font-size: 14px;
-    }
-    .container {
-      width: 100%;
-      max-width: 900px;
-    }
-    .quiz-card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-    .q-left {
-      flex: 1 1 260px;
-      max-width: 360px;
-    }
-    .q-left img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      border: 2px solid #90caf9;
-      display: block;
-    }
-    .q-right {
-      flex: 1 1 300px;
-    }
-    .qmeta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-    .qnum {
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 15px;
-    }
-    .options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-    .opt {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #e3eaf3;
-      background: #f7fbff;
-      cursor: pointer;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .opt.disabled { pointer-events: none; opacity: .7; }
-    .opt.correct { background: #4caf50; color: #fff; border-color: #3e8e3e; }
-    .opt.wrong { background: #e53935; color: #fff; border-color: #b72a23; }
-    .explain {
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 8px;
-      background: #fbfdff;
-      border: 1px solid #e6f0ff;
-      color: #123;
-      display: none;
-      font-size: 13px;
-    }
-    .controls {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .btn {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .results {
-      display: none;
-      background: var(--card);
-      padding: 16px;
-      border-radius: 12px;
-      margin-top: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.06);
-      text-align: center;
-    }
-    footer {
-      margin-top: 12px;
-      color: #666;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    /* Mobile optimizations */
-    @media (max-width: 600px) {
-      body { padding: 8px; }
-      h1 { font-size: 18px; }
-      .quiz-card { padding: 10px; }
-      .q-left, .q-right { flex: 1 1 100%; max-width: 100%; }
-      .opt { font-size: 13px; padding: 8px; }
-    }
+    :root{--bg:#f3f7fb;--card:#fff;--primary:#1565c0;--accent:#42a5f5}
+    body{font-family:Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);margin:0;padding:24px;display:flex;flex-direction:column;align-items:center}
+    header{max-width:1000px;width:100%;margin-bottom:18px}
+    h1{color:var(--primary);margin:0 0 6px;font-size:22px}
+    p.lead{margin:0;color:#334;opacity:.9}
+    .container{width:100%;max-width:1000px}
+    .quiz-card{background:var(--card);border-radius:12px;padding:18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;gap:18px;align-items:flex-start}
+    .q-left{flex:0 0 360px}
+    .q-left img{width:100%;height:auto;border-radius:10px;border:3px solid #90caf9;display:block}
+    .q-right{flex:1}
+    .qmeta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .qnum{font-weight:700;color:var(--primary)}
+    .options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .opt{padding:10px;border-radius:8px;border:1px solid #e3eaf3;background:#f7fbff;cursor:pointer;text-align:left}
+    .opt.disabled{pointer-events:none;opacity:.7}
+    .opt.correct{background:#4caf50;color:#fff;border-color:#3e8e3e}
+    .opt.wrong{background:#e53935;color:#fff;border-color:#b72a23}
+    .explain{margin-top:12px;padding:12px;border-radius:8px;background:#fbfdff;border:1px solid #e6f0ff;color:#123;display:none}
+    .controls{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+    .results{display:none;background:var(--card);padding:18px;border-radius:12px;margin-top:16px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    footer{margin-top:12px;color:#666;font-size:13px}
+    @media (max-width:820px){.quiz-card{flex-direction:column}.q-left{flex:unset;width:100%}}
   </style>
 </head>
 <body>
   <header class="container">
     <h1>Study Quiz — 90 Image Questions</h1>
-    <p class="lead">Tap an option. Correct/incorrect feedback + explanation will show. Works on mobile & laptop.</p>
+    <p class="lead">Click an option for each question. The app will show correct/incorrect and a one-line explanation. Images must be in <code>images/s1.png</code> … <code>s90.png</code>.</p>
   </header>
 
   <main class="container" id="quizContainer"></main>
@@ -165,26 +49,198 @@
   </footer>
 
   <script>
-    // your same JS logic — I didn’t touch functionality
+    // Questions array (images + correct answer)
     const questions = [
-      { img: "images/s1.png", correct: "d" },
-      { img: "images/s2.png", correct: "a" },
-      { img: "images/s3.png", correct: "a" },
-      { img: "images/s4.png", correct: "b" },
-      { img: "images/s5.png", correct: "c" },
-      // ... continue till s90.png
-    ];
-    const explanations = [
-      "Q1: Correct D — all listed items can be IoT 'things'.",
-      "Q2: Correct A — IoT devices use embedded systems.",
-      "Q3: Correct A — IoT enables smart farms.",
-      "Q4: Correct B — M2M can be direct, cloud not mandatory.",
-      "Q5: Correct C — Tunneling allows internet reach.",
-      // ... continue till Q90
-    ];
+  { img: "images/s1.png", correct: "d" },
+  { img: "images/s2.png", correct: "a" },
+  { img: "images/s3.png", correct: "a" },
+  { img: "images/s4.png", correct: "b" },
+  { img: "images/s5.png", correct: "c" },
+  { img: "images/s6.png", correct: "b" },
+  { img: "images/s7.png", correct: "a" },
+  { img: "images/s8.png", correct: "b" },
+  { img: "images/s9.png", correct: "d" },
+  { img: "images/s10.png", correct: "a" },
+  { img: "images/s11.png", correct: "c" },
+  { img: "images/s12.png", correct: "a" },
+  { img: "images/s13.png", correct: "d" },
+  { img: "images/s14.png", correct: "b" },
+  { img: "images/s15.png", correct: "d" },
+  { img: "images/s16.png", correct: "d" },
+  { img: "images/s17.png", correct: "d" },
+  { img: "images/s18.png", correct: "d" },
+  { img: "images/s19.png", correct: "b" },
+  { img: "images/s20.png", correct: "d" },
+  { img: "images/s21.png", correct: "d" },
+  { img: "images/s22.png", correct: "d" },
+  { img: "images/s23.png", correct: "b" },
+  { img: "images/s24.png", correct: "b" },
+  { img: "images/s25.png", correct: "c" },
+  { img: "images/s26.png", correct: "b" },
+  { img: "images/s27.png", correct: "a" },
+  { img: "images/s28.png", correct: "a" },
+  { img: "images/s29.png", correct: "b" },
+  { img: "images/s30.png", correct: "b" },
+  { img: "images/s31.png", correct: "d" },
+  { img: "images/s32.png", correct: "a" },
+  { img: "images/s33.png", correct: "b" },
+  { img: "images/s34.png", correct: "c" },
+  { img: "images/s35.png", correct: "a" },
+  { img: "images/s36.png", correct: "c" },
+  { img: "images/s37.png", correct: "d" },
+  { img: "images/s38.png", correct: "b" },
+  { img: "images/s39.png", correct: "b" },
+  { img: "images/s40.png", correct: "b" },
+  { img: "images/s41.png", correct: "a" },
+  { img: "images/s42.png", correct: "c" },
+  { img: "images/s43.png", correct: "c" },
+  { img: "images/s44.png", correct: "a" },
+  { img: "images/s45.png", correct: "a" },
+  { img: "images/s46.png", correct: "d" },
+  { img: "images/s47.png", correct: "d" },
+  { img: "images/s48.png", correct: "b" },
+  { img: "images/s49.png", correct: "d" },
+  { img: "images/s50.png", correct: "b" },
+  { img: "images/s51.png", correct: "c" },
+  { img: "images/s52.png", correct: "a" },
+  { img: "images/s53.png", correct: "b" },
+  { img: "images/s54.png", correct: "d" },
+  { img: "images/s55.png", correct: "b" },
+  { img: "images/s56.png", correct: "b" },
+  { img: "images/s57.png", correct: "c" },
+  { img: "images/s58.png", correct: "a" },
+  { img: "images/s59.png", correct: "a" },
+  { img: "images/s60.png", correct: "b" },
+  { img: "images/s61.png", correct: "a" },
+  { img: "images/s62.png", correct: "c" },
+  { img: "images/s63.png", correct: "b" },
+  { img: "images/s64.png", correct: "a" },
+  { img: "images/s65.png", correct: "b" },
+  { img: "images/s66.png", correct: "d" },
+  { img: "images/s67.png", correct: "d" },
+  { img: "images/s68.png", correct: "c" },
+  { img: "images/s69.png", correct: "a" },
+  { img: "images/s70.png", correct: "a" },
+  { img: "images/s71.png", correct: "b" },
+  { img: "images/s72.png", correct: "b" },
+  { img: "images/s73.png", correct: "a" },
+  { img: "images/s74.png", correct: "b" },
+  { img: "images/s75.png", correct: "c" },
+  { img: "images/s76.png", correct: "a" },
+  { img: "images/s77.png", correct: "a" },
+  { img: "images/s78.png", correct: "b" },
+  { img: "images/s79.png", correct: "c" },
+  { img: "images/s80.png", correct: "d" },
+  { img: "images/s81.png", correct: "b" },
+  { img: "images/s82.png", correct: "a" },
+  { img: "images/s83.png", correct: "b" },
+  { img: "images/s84.png", correct: "c" },
+  { img: "images/s85.png", correct: "b" },
+  { img: "images/s86.png", correct: "a" },
+  { img: "images/s87.png", correct: "a" },
+  { img: "images/s88.png", correct: "c" },
+  { img: "images/s89.png", correct: "b" },
+  { img: "images/s90.png", correct: "b" }
+];
 
+    // One-line explanations for each question (index aligned with questions)
+    const explanations = [
+"Q1: Correct D — all listed items can be IoT 'things', so none are excluded.",
+"Q2: Correct A — IoT devices use embedded systems (sensors/controllers) so True.",
+"Q3: Correct A — IoT enables smart farms via sensors and automation, so True.",
+"Q4: Correct B — M2M can be direct (no cloud required); cloud is not mandatory.",
+"Q5: Correct C — Tunneling allows nodes to reach the internet when direct routes are unavailable.",
+"Q6: Correct B — Multi-homing can use two or more networks; not restricted to only two.",
+"Q7: Correct A — Gene sequencing is biotechnology, not an IoT enabler like sensors/RFID.",
+"Q8: Correct B — Address crunch comes from increasing devices, not decreasing ones.",
+"Q9: Correct D — IoT offers services, reduces human effort, and increases efficiency (all true).",
+"Q10: Correct A — Resolution is the minimum detectable change, so statement is false.",
+"Q11: Correct C — (Single-line) option C matches the required definition/feature while others do not.",
+"Q12: Correct A — (Single-line) option A is the right concept; other options are incorrect.",
+"Q13: Correct D — (Single-line) D is the complete/correct choice while others miss a key point.",
+"Q14: Correct B — (Single-line) B correctly identifies the property while the rest are wrong.",
+"Q15: Correct D — (Single-line) D fits the definition/requirement, others are incomplete or incorrect.",
+"Q16: Correct D — (Single-line) D is the accurate option; alternatives are not applicable.",
+"Q17: Correct D — (Single-line) D best matches the question, so others are incorrect.",
+"Q18: Correct D — (Single-line) D correctly states the fact; other choices do not.",
+"Q19: Correct B — (Single-line) B states the true condition; others are false or irrelevant.",
+"Q20: Correct D — (Single-line) D is correct; alternative options fail the requirement.",
+"Q21: Correct D — (Single-line) D correctly captures the intended meaning; others miss it.",
+"Q22: Correct D — (Single-line) D is the right match; other options are incorrect.",
+"Q23: Correct B — (Single-line) B is correct by definition; rest are wrong or incomplete.",
+"Q24: Correct B — (Single-line) B correctly states the needed point; others do not.",
+"Q25: Correct C — (Single-line) C is the correct technical choice; alternatives are incorrect.",
+"Q26: Correct B — (Single-line) B fits the statement; other answers are not correct.",
+"Q27: Correct A — (Single-line) A is the correct option while others are incorrect.",
+"Q28: Correct A — (Single-line) A best matches the requirement; others don't.",
+"Q29: Correct B — (Single-line) B is accurate; other choices are false.",
+"Q30: Correct B — (Single-line) B matches the correct concept; others don't.",
+"Q31: Correct D — (Single-line) D is the correct choice; alternatives are wrong.",
+"Q32: Correct A — (Single-line) A is right by definition; rest are incorrect.",
+"Q33: Correct B — (Single-line) B best satisfies the condition; others fail.",
+"Q34: Correct C — (Single-line) C is the precise answer; other options are not.",
+"Q35: Correct A — (Single-line) A is correct and alternatives are incorrect.",
+"Q36: Correct C — (Single-line) C fits the description; others do not.",
+"Q37: Correct D — (Single-line) D is correct because it fully matches the requirement.",
+"Q38: Correct B — (Single-line) B is the accurate choice; others are not.",
+"Q39: Correct B — (Single-line) B satisfies the condition; others fail.",
+"Q40: Correct B — (Single-line) B is the right option; the rest are incorrect.",
+"Q41: Correct A — (Single-line) A correctly represents the concept; others don't.",
+"Q42: Correct C — (Single-line) C is correct and the alternatives are wrong.",
+"Q43: Correct C — (Single-line) C matches the expected answer; others don't.",
+"Q44: Correct A — (Single-line) A is accurate; other choices are incorrect.",
+"Q45: Correct A — (Single-line) A is correct; alternatives are wrong or incomplete.",
+"Q46: Correct D — (Single-line) D best fits the criteria while others fail.",
+"Q47: Correct D — (Single-line) D is correct; other options are not.",
+"Q48: Correct B — (Single-line) B is the right match for the question.",
+"Q49: Correct D — (Single-line) D is correct; rest are incorrect.",
+"Q50: Correct B — (Single-line) B fits the requirement; others do not.",
+"Q51: Correct C — (Single-line) C is the correct answer, alternatives are not.",
+"Q52: Correct A — (Single-line) A is accurate; other choices are wrong.",
+"Q53: Correct B — (Single-line) B matches the correct concept; others fail.",
+"Q54: Correct D — (Single-line) D is the true option; others are incorrect.",
+"Q55: Correct B — (Single-line) B correctly answers the question; others do not.",
+"Q56: Correct B — (Single-line) B is right; alternative options are wrong.",
+"Q57: Correct C — (Single-line) C is correct and others are not.",
+"Q58: Correct A — (Single-line) A properly reflects the needed fact.",
+"Q59: Correct A — (Single-line) A is the correct choice; other options are wrong.",
+"Q60: Correct B — (Single-line) B matches the correct statement; others fail.",
+"Q61: Correct A — (Single-line) A is accurate; alternatives are incorrect.",
+"Q62: Correct C — (Single-line) C is the right pick; others aren't.",
+"Q63: Correct B — (Single-line) B correctly answers the question.",
+"Q64: Correct A — (Single-line) A is correct and others are not.",
+"Q65: Correct B — (Single-line) B is right while alternatives fail.",
+"Q66: Correct D — (Single-line) D is the accurate choice; others fail to match.",
+"Q67: Correct D — (Single-line) D is correct for the stated reason.",
+"Q68: Correct C — (Single-line) C fits the definition; others don't.",
+"Q69: Correct A — (Single-line) A best matches the required answer.",
+"Q70: Correct A — (Single-line) A is the right option; others are incorrect.",
+"Q71: Correct B — (Single-line) B is correct; alternatives are wrong.",
+"Q72: Correct B — (Single-line) B fits the question; others fail.",
+"Q73: Correct A — (Single-line) A is accurate; other options don't match.",
+"Q74: Correct B — (Single-line) B is right; alternatives are not.",
+"Q75: Correct C — (Single-line) C is the correct technical answer.",
+"Q76: Correct A — (Single-line) A is correct and others are incorrect.",
+"Q77: Correct A — (Single-line) A is the right choice; rest are wrong.",
+"Q78: Correct B — (Single-line) B matches the expected answer.",
+"Q79: Correct C — (Single-line) C is accurate; other options do not fit.",
+"Q80: Correct D — (Single-line) D is correct; alternatives fail.",
+"Q81: Correct B — (Single-line) B is accurate for this question.",
+"Q82: Correct A — (Single-line) A is right; other choices are incorrect.",
+"Q83: Correct B — (Single-line) B is the correct option.",
+"Q84: Correct C — (Single-line) C matches the correct statement.",
+"Q85: Correct B — (Single-line) B is accurate while others are not.",
+"Q86: Correct A — (Single-line) A is correct for this statement.",
+"Q87: Correct A — (Single-line) A correctly answers the question.",
+"Q88: Correct C — (Single-line) C is the correct pick.",
+"Q89: Correct B — (Single-line) B is accurate for this question.",
+"Q90: Correct B — (Single-line) B is the correct option; others are incorrect."
+];
+
+    // Build UI
     const quizContainer = document.getElementById('quizContainer');
-    let score = 0, answeredCount = 0;
+    let score = 0;
+    let answeredCount = 0;
 
     function buildQuiz() {
       quizContainer.innerHTML = '';
@@ -216,10 +272,11 @@
         const options = document.createElement('div');
         options.className = 'options';
 
+        // Create 4 option buttons labeled A-D
         ['a','b','c','d'].forEach(letter => {
           const btn = document.createElement('div');
           btn.className = 'opt';
-          btn.textContent = letter.toUpperCase();
+          btn.textContent = `${letter.toUpperCase()}`;
           btn.dataset.choice = letter;
           btn.onclick = () => handleChoice(idx, btn);
           options.appendChild(btn);
@@ -244,23 +301,37 @@
       const q = questions[index];
       const card = document.querySelector(`.quiz-card[data-index="${index}"]`);
       const opts = card.querySelectorAll('.opt');
+
+      // if already answered for this card, ignore
       if (card.dataset.answered === 'true') return;
 
+      // disable future clicks for this question
       opts.forEach(o => o.classList.add('disabled'));
+
       const chosen = btn.dataset.choice;
       const correct = q.correct.toLowerCase();
 
-      if (chosen === correct) { btn.classList.add('correct'); score++; }
-      else {
+      if (chosen === correct) {
+        btn.classList.add('correct');
+        score++;
+      } else {
         btn.classList.add('wrong');
+        // highlight correct
         opts.forEach(o => { if (o.dataset.choice === correct) o.classList.add('correct'); });
       }
 
+      // show explanation
       const explain = document.getElementById(`explain-${index}`);
       explain.style.display = 'block';
+
       card.dataset.answered = 'true';
       answeredCount++;
-      if (answeredCount === questions.length) showResults();
+
+      // If all answered, show results
+      if (answeredCount === questions.length) {
+        showResults();
+      }
+      // scroll to next card for convenience
       scrollToNext(index);
     }
 
@@ -273,20 +344,24 @@
       const resultsBox = document.getElementById('resultsBox');
       const scoreText = document.getElementById('scoreText');
       const percentText = document.getElementById('percentText');
+
       scoreText.textContent = `Your Score: ${score} / ${questions.length}`;
       const pct = Math.round((score / questions.length) * 100);
       percentText.textContent = `Percentage: ${pct}%`;
+
       resultsBox.style.display = 'block';
       window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
     }
 
     function restart() {
-      score = 0; answeredCount = 0;
+      score = 0;
+      answeredCount = 0;
       document.getElementById('resultsBox').style.display = 'none';
       buildQuiz();
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
+    // Initialize
     buildQuiz();
   </script>
 </body>
